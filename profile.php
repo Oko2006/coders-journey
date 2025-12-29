@@ -1,5 +1,5 @@
 <?php
-// 1. LINK TO BACKEND (Teammate's file)
+
 // require 'actions/fetch_profile.php';
 
 // --- TEMPORARY MOCK DATA ---
@@ -13,13 +13,13 @@ $user = [
     'avatar_color' => '#f1c40f' // Just a random color for the default avatar
 ];
 
-// Roadmaps the user is following
+
 $my_roadmaps = [
     ['id' => 1, 'title' => 'Frontend Mastery', 'percent' => 45],
     ['id' => 3, 'title' => 'Advanced Python', 'percent' => 10]
 ];
 
-// Questions the user has asked
+
 $my_questions = [
     ['id' => 50, 'title' => 'How to center a div?', 'votes' => 5, 'date' => 'Oct 20'],
     ['id' => 52, 'title' => 'MySQL vs PostgreSQL?', 'votes' => 12, 'date' => 'Oct 22']

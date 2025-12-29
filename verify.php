@@ -32,7 +32,6 @@ if (isset($_GET['email'])) {
             border: 1px solid #e1e4e8;
             text-align: center;
         }
-        /* Make the OTP input look cool (Big & Spaced out) */
         .otp-input {
             font-size: 2rem;
             letter-spacing: 10px;

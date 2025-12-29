@@ -1,5 +1,4 @@
 <?php
-// 1. LINK TO BACKEND
 // require 'actions/fetch_roadmaps.php';
 
 // --- TEMPORARY MOCK DATA (DELETE LATER) ---

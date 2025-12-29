@@ -1,5 +1,4 @@
 <?php
-// 1. LINK TO BACKEND (Teammate's file)
 // require 'actions/fetch_roadmap_details.php';
 
 // --- TEMPORARY MOCK DATA ---
@@ -18,12 +17,11 @@ $steps = [
     ['id' => 105, 'title' => 'DOM Manipulation', 'description' => 'Selecting elements and handling events.', 'is_completed' => false],
 ];
 
-// Calculate initial progress for the bar
 $total_steps = count($steps);
 $completed_steps = 0;
 foreach($steps as $s) { if($s['is_completed']) $completed_steps++; }
 $progress_percent = ($total_steps > 0) ? round(($completed_steps / $total_steps) * 100) : 0;
-// ----------------------------
+
 session_start();
 ?>
 
@@ -191,26 +189,19 @@ session_start();
 
     <script>
         function updateProgress() {
-            // 1. Count all checkboxes
             const allChecks = document.querySelectorAll('.step-check');
             const total = allChecks.length;
-            
-            // 2. Count only CHECKED boxes
+
             let checkedCount = 0;
             allChecks.forEach(box => {
                 if(box.checked) checkedCount++;
             });
 
-            // 3. Calculate %
             const percent = Math.round((checkedCount / total) * 100);
 
-            // 4. Update width and text
             document.getElementById('main-progress-bar').style.width = percent + '%';
             document.getElementById('percent-display').innerText = percent;
-
-            // 5. (Optional) Send data to Backend via AJAX so it saves!
-            // This part is for the Backend Guy to implement later.
-            /*
+ 
             fetch('actions/update_progress.php', {
                 method: 'POST',
                 body: new URLSearchParams({
@@ -218,7 +209,7 @@ session_start();
                     'status': event.target.checked ? 1 : 0
                 })
             });
-            */
+            
         }
     </script>
 

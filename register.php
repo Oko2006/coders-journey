@@ -1,5 +1,5 @@
 <?php
-// 1. CHECK IF ALREADY LOGGED IN
+
 session_start();
 
 if (isset($_SESSION['user_id'])) {

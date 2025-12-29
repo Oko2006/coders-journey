@@ -184,3 +184,43 @@ Once you create the logic files above:
 3. Uncomment the line: `require 'actions/fetch_questions.php';`
 
 خليت عمك gemini يسوي الفايل هاض كامل عشانه معي بالشغل أول بأول
+
+------------------------------------------------------------------------------
+NEW FEATURE: TAGS SYSTEM (tags.php & tag.php)
+------------------------------------------------------------------------------
+
+1. DATABASE UPDATE
+   To support the "Big Tag" vs "Sub Tag" layout, we need a new table.
+   Run this SQL:
+
+   CREATE TABLE tag_definitions (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       main_tag VARCHAR(50) NOT NULL,      -- e.g. "Python"
+       sub_tags TEXT,                      -- e.g. "Django, Flask, Pandas" (Comma separated)
+       description VARCHAR(255),
+       question_count INT DEFAULT 0
+   );
+
+   INSERT INTO tag_definitions (main_tag, sub_tags, description) VALUES 
+   ('Python', 'Django,Flask,Scripting', 'General purpose programming language.'),
+   ('JavaScript', 'React,Vue,Node,ES6', 'Language of the web.'),
+   ('Java', 'Spring,Android,OOP', 'Object-oriented language for enterprise.');
+
+2. CREATE: actions/fetch_all_tags.php
+   - Query: SELECT * FROM tag_definitions
+   - Output: Variable $tag_groups
+
+3. CREATE: actions/fetch_questions_by_tag.php
+   - Input: $_GET['name'] (e.g. "Django")
+   - Logic: 
+     The 'tags' column in 'questions' table stores strings like "python,django".
+     You need to search inside that string.
+     
+     SQL: SELECT q.*, u.username 
+          FROM questions q
+          JOIN users u ON q.user_id = u.id
+          WHERE q.tags LIKE :tag_search
+     
+     (Note: bind :tag_search as "%" . $tag_name . "%")
+     
+   - Output: Variable $questions
