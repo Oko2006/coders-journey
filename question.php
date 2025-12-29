@@ -106,7 +106,9 @@
                             
                             <div class="user-info">
                                 <span class="text-muted">asked by</span>
-                                <strong style="color: #4a90e2;"><?php echo htmlspecialchars($question['username']); ?></strong>
+                                <a href="profile.php?id=<?php echo $q['user_id']; ?>">
+                                    <strong style="color: #4a90e2;"><?php echo htmlspecialchars($question['username']); ?></strong>
+                                </a>
                                 <span class="text-muted">on <?php echo date('M d', strtotime($question['created_at'])); ?></span>
                             </div>
                         </div>
@@ -142,7 +144,9 @@
                             <div class="meta-footer" style="justify-content: flex-end;">
                                 <div class="user-info">
                                     <span class="text-muted">answered by</span>
-                                    <strong><?php echo htmlspecialchars($ans['username']); ?></strong>
+                                    <a href="profile.php?id=<?php echo $q['user_id']; ?>">
+                                        <strong><?php echo htmlspecialchars($ans['username']); ?></strong>
+                                    </a>
                                     <span class="text-muted"><?php echo date('M d', strtotime($ans['created_at'])); ?></span>
                                 </div>
                             </div>
@@ -173,13 +177,6 @@
         </main>
 
         <aside class="sidebar-right">
-            <div class="card">
-                <h3>Related Questions</h3>
-                <ul style="padding-left: 20px; font-size: 0.9rem; color: #4a90e2;">
-                    <li><a href="#">How flexbox works?</a></li>
-                    <li><a href="#">CSS Grid vs Flexbox</a></li>
-                </ul>
-            </div>
         </aside>
 
     </div>

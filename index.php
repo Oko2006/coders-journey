@@ -104,7 +104,7 @@
                             
                             <div class="user-info">
                                 <span class="text-muted">asked by</span>
-                                <a href="#" class="author-name">
+                                <a href="profile.php?id=<?php echo $q['user_id']; ?>" class="author-name">
                                     <?php echo isset($q['username']) ? htmlspecialchars($q['username']) : 'User #' . $q['user_id']; ?>
                                 </a>
                                 <span class="text-muted">
